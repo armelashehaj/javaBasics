@@ -30,6 +30,7 @@ public class ProdhINrBinar {
             faktor = 10;
         }
         System.out.print("Prodhimi i dy numrave eshte :  " + prodhimi+"\n");
+        System.out.println("sfdgdhf");
     }
 
     /*funksion */

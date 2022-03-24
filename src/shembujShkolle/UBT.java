@@ -5,14 +5,23 @@ import java.util.Scanner;
 /*lista e fakulteteve dhe degeve te tyre*/
 public class UBT {
     public static void main(String[] args) {
-        Scanner teDhenat = new Scanner(System.in);
-
+        shfaqInformacionPerFakultetet();
+        int fakulteti = this.zgjidhFakultetin();
+        shfaqDegetEFakultetit(fakulteti);
+    }
+    
+    protected static void shfaqInformacionPerFakultetet()
+    {
         System.out.println("Fakultetet ne UBT jane : \n1. FBM Fakulteti i Bujqësisë dhe Mjedisit\n" +
                 "2.FEA Fakulteti i Ekonomisë dhe Agrobiznesit\n" +
                 "3.FBU Fakulteti i Bioteknologjisë dhe Ushqimit\n" +
                 "4.FSHP Fakulteti i Shkencave Pyjore\n" +
                 "5.FMV Fakulteti i Mjekësisë Veterinare\n");
-
+    }
+    
+    protectet int zhgjidhFakultetin()
+    {
+        Scanner teDhenat = new Scanner(System.in);
         System.out.println("Vendosni numrin e fakultetit , degen e te cilit doni te dini: \t  ");
         int n = teDhenat.nextInt();
         if (n < 1 || n > 5 ){
@@ -22,8 +31,13 @@ public class UBT {
                 n = teDhenat.nextInt();
             }
         }
-
-        switch (n){
+        
+        return n;
+    }
+    
+    protected void shfaqDegetEFakultetit(int fakulteti)
+    {
+        switch (fakulteti){
             case 1 :
                 System.out.println("Biologji Marine dhe Akuakulturë\n" +
                         "Hortikulturë\n" +

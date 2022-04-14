@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class UBT {
     public static void main(String[] args) {
         shfaqInformacionPerFakultetet();
-        int fakulteti = this.zgjidhFakultetin();
+        int fakulteti = zhgjidhFakultetin();
         shfaqDegetEFakultetit(fakulteti);
     }
     
@@ -19,7 +19,7 @@ public class UBT {
                 "5.FMV Fakulteti i Mjekësisë Veterinare\n");
     }
     
-    protectet int zhgjidhFakultetin()
+    protected  static  int zhgjidhFakultetin()
     {
         Scanner teDhenat = new Scanner(System.in);
         System.out.println("Vendosni numrin e fakultetit , degen e te cilit doni te dini: \t  ");
@@ -35,7 +35,7 @@ public class UBT {
         return n;
     }
     
-    protected void shfaqDegetEFakultetit(int fakulteti)
+    protected static void shfaqDegetEFakultetit(int fakulteti)
     {
         switch (fakulteti){
             case 1 :

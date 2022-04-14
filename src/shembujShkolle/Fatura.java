@@ -7,6 +7,8 @@ import java.util.Date;
 import java.text.SimpleDateFormat;  
 
 public class Fatura {
+    protected static  final String FORMATI = "dd/MM/yyyy ";
+
     public static void main(String[] args) {
         Scanner teDhenat = new Scanner(System.in);
         /*Afishimi i artikujve */
@@ -17,7 +19,7 @@ public class Fatura {
                 "5.Briosh\t70\n" +
                 "6.Bravo\t150\n");
         /*Deklarimi i variablave */
-         SimpleDateFormat formati = new SimpleDateFormat("dd/MM/yyyy ");
+         SimpleDateFormat formati = new SimpleDateFormat(FORMATI);
          Date date = new Date();
            int produkti, sasia, mbaro = 1;
 

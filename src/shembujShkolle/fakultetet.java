@@ -21,6 +21,15 @@ public class fakultetet {
         "Master Profesional " ,
         "Master Shkencor"};
 
+        System.out.println("Programet e studimit ne UBT jane :");
+        for (String VleraAktuale : programetEStudimit)
+            System.out.println("\t\t"+ VleraAktuale);
+
+        System.out.println("Fakultetet  ne UBT jane :");
+
+        for (String VlereAktuale : fakulteti)
+            System.out.println("\t\t"+VlereAktuale);
+
         for(int i = 0 ; i < n ; i++){
             for(int j = 0 ; j < m ; j++){
                 System.out.println("Vendosni numrin e degeve per " + programetEStudimit[i] +
@@ -29,7 +38,7 @@ public class fakultetet {
             }
         }
 
-        int max = deget[0][0];
+        int max = 0;
 /*Gjej nje here maksimumin*/
         for(int i = 0 ; i < n ; i++){
             for(int j = 0 ; j < m ; j++){
@@ -45,6 +54,7 @@ public class fakultetet {
                 System.out.println(programetEStudimit[i] +" per "+fakulteti[j] + " ka " + max + " dege.");
         }
     }
+        System.out.printf("\n");
 
     int shuma = 0 ;
 
@@ -55,20 +65,30 @@ public class fakultetet {
         }
         System.out.println(programetEStudimit[i] + " ka gjithesej " + shuma + " dege.");
     }
+        System.out.printf("\n");
 
     int[] shumaF = new int[m];
+    int[] vektorRezerve = new int[m];
     for (int j = 0 ; j < m; j++){
         shuma = 0 ;
         for(int i = 0 ; i < n ; i++){
             shuma = shuma + deget[i][j];
             shumaF[j] = shuma ;
+            vektorRezerve[j] = shuma;
         }
         System.out.println(fakulteti[j] + " ka gjithsej " + shuma + " dege.");
     }
+        System.out.printf("\n");
         Arrays.sort(shumaF);
-    for (int i = 0 ; i < m ; i++){
-        System.out.printf("%d\t" , shumaF[i]);
-    }
+
+          for (int i = 0 ; i < shumaF.length ; i++){
+            for (int j = 0 ; j < vektorRezerve.length ; j++){
+                if(shumaF[i] == vektorRezerve[j] ){
+                    System.out.println(fakulteti[j] + " ka " + shumaF[i] + " dege.");
+                }
+            }
+        }
+        System.out.printf("\n");
 
     }
 

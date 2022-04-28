@@ -62,8 +62,6 @@ public class rrugaPerTirane {
         formatiIKohes[1] = minutaTotal ;
 
         System.out.printf("%d ore %d minuta \n" , formatiIKohes[0] , formatiIKohes[1]);
-
-
     }
 
     /**

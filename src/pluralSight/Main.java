@@ -23,8 +23,8 @@ public class Main {
     Flight dfwToNyc = new Flight();
     dfwToNyc.add1Passenger();
 
-    System.out.println(laxToSlc.getAllPassengers());
-    System.out.println(dfwToNyc.getAllPassengers());
+    System.out.println(laxToSlc.getPassengers());
+    System.out.println(dfwToNyc.getPassengers());
     System.out.println(Flight.getAllPassengers());
 
     }

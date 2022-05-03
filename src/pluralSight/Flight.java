@@ -6,10 +6,21 @@ public class Flight {
     private  int flightNumber ;
     private  char flightClass ;
 
-    private  static  int allPassengers ;
+    private  static  int allPassengers  ;
+    private  static int maxPassengersPerFlight ;
+
+    static {
+
+
+    }
     public  static  int getAllPassengers(){
         return allPassengers;
     }
+
+    public int getPassengers() {
+        return passengers;
+    }
+
     public  static  void resetAllPassengers (){
         allPassengers = 0 ;
     }

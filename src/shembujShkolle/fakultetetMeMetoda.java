@@ -4,18 +4,26 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class fakultetetMeMetoda {
+    /**
+     *  Numer fakultetesh
+     */
+    private static final int numerFakultetesh = 5;
+    /**
+     *  Numer programesh
+     */
+    private static final int numerProgramesh = 5;
+
     public static void main(String[] args) {
-        int m = 5, n = 5;
-        int[][] deget = new int[n][m];
+        int[][] deget = new int[numerProgramesh][numerFakultetesh];
 
-        String[] programetEStudimit = {"Programi 2 vjecar", "Bachelor", "Master Profesional ", "Master Shkencor"};
-        String[] fakulteti = {"Fakulteti i Bujqesise dhe Mjedisit", "Fakulteti i Ekonomise dhe Agrobiznesit", "Fakulteti i Bioteknologjise dhe Ushqimit", "Fakulteti i Shkencave Pyjore", "Fakulteti i Mjeksise Veterinare"};
+        String[] programetEStudimit = getProgrametEStudimit();
+        String[] fakulteti = getFakultete();
 
-        mbushjaEMatrices(deget, programetEStudimit, fakulteti);
+        vendosNumrinEDegeve(deget, programetEStudimit, fakulteti);
         System.out.printf("\n");
-        maksimumiIDegeve(deget, programetEStudimit, fakulteti);
+        gjejMaksimuminEDegeve(deget, programetEStudimit, fakulteti);
         System.out.printf("\n");
-        shumaSipasProgramit(deget, programetEStudimit);
+        llogaritShumenSipasProgramit(deget, programetEStudimit);
         System.out.printf("\n");
         shumaEDegeve(deget);
         System.out.printf("\n");
@@ -25,48 +33,52 @@ public class fakultetetMeMetoda {
     }
 
     /**
-     * @param m1
+     *
+     * @param deget
+     * @param programetEStudimit
+     * @param fakultetet
      */
-    private static void mbushjaEMatrices(int m1[][], String[] v1, String[] v2) {
+    private static void vendosNumrinEDegeve(int[][] deget, String[] programetEStudimit, String[] fakultetet) {
         Scanner teDhenat = new Scanner(System.in);
 
         System.out.println("Programet e studimit ne UBT jane :");
-        for (String VleraAktuale : v1)
-            System.out.println("\t\t" + VleraAktuale);
+        for (String programi : programetEStudimit)
+            System.out.println("\t\t" + programi);
 
         System.out.println("Fakultetet  ne UBT jane :");
 
-        for (String VlereAktuale : v2)
-            System.out.println("\t\t" + VlereAktuale);
+        for (String fakulteti : fakultetet)
+            System.out.println("\t\t" + fakulteti);
 
-        for (int i = 0; i < v1.length; i++) {
-            for (int j = 0; j < v2.length; j++) {
-                System.out.println("Vendosni numrin e degeve per " + v1[i] + " , " + v2[j] + " : ");
-                m1[i][j] = teDhenat.nextInt();
+        for (int pozicionProgrami = 0; pozicionProgrami < programetEStudimit.length; pozicionProgrami++) {
+            for (int pozicionFakulteti = 0; pozicionFakulteti < fakultetet.length; pozicionFakulteti++) {
+                System.out.println("Vendosni numrin e degeve per " + programetEStudimit[pozicionProgrami] + " , " + fakultetet[pozicionFakulteti] + " : ");
+                int numriIDegeve = teDhenat.nextInt();
+                deget[pozicionProgrami][pozicionFakulteti] = numriIDegeve;
             }
         }
     }
 
     /**
-     * @param m
-     * @param v1
-     * @param v2
+     * @param deget
+     * @param programetEStudimit
+     * @param fakultetet
      */
-    private static void maksimumiIDegeve(int m[][], String[] v1, String[] v2) {
+    private static void gjejMaksimuminEDegeve(int[][] deget, String[] programetEStudimit, String[] fakultetet) {
         int max = 0;
         /*Mqs matrice kubike ath kemi gjatesine e rreshtave te njejte me gjatesine e kolonave
          * ndaj perdor tek te dyja matrice.length , ne te kundert do merrja si parametra dhe gjatesine
          * e rreshtave dhe kolonave */
         /*Gjej nje here maksimumin*/
-        for (int i = 0; i < m.length; i++) {
-            for (int j = 0; j < m.length; j++) {
-                if (max < m[i][j]) max = m[i][j];
+        for (int pozicioniProgramitNeDeg = 0; pozicioniProgramitNeDeg < deget.length; pozicioniProgramitNeDeg++) {
+            for (int pozicioniIFakultetitNeDege = 0; pozicioniIFakultetitNeDege < deget.length; pozicioniIFakultetitNeDege++) {
+                if (max < deget[pozicioniProgramitNeDeg][pozicioniProgramitNeDeg]) max = deget[pozicioniProgramitNeDeg][pozicioniIFakultetitNeDege];
             }
         }
         /*Kontrolloj per maksimumin neper tabele per te afishuar fakultetin dhe programin e studimit*/
-        for (int i = 0; i < m.length; i++) {
-            for (int j = 0; j < m.length; j++) {
-                if (max == m[i][j]) System.out.println(v1[i] + " per " + v2[j] + " ka " + max + " dege.");
+        for (int pozicioniProgramitNeDeg = 0; pozicioniProgramitNeDeg < deget.length; pozicioniProgramitNeDeg++) {
+            for (int pozicioniIFakultetitNeDege = 0; pozicioniIFakultetitNeDege < deget.length; pozicioniIFakultetitNeDege++) {
+                if (max == deget[pozicioniProgramitNeDeg][pozicioniIFakultetitNeDege]) System.out.println(programetEStudimit[pozicioniProgramitNeDeg] + " per " + fakultetet[pozicioniIFakultetitNeDege] + " ka " + max + " dege.");
             }
         }
     }
@@ -75,7 +87,7 @@ public class fakultetetMeMetoda {
      * @param m
      * @param v1
      */
-    private static void shumaSipasProgramit(int m[][], String[] v1) {
+    private static void llogaritShumenSipasProgramit(int m[][], String[] v1) {
         int shuma = 0;
         for (int i = 0; i < v1.length; i++) {
             shuma = 0;
@@ -129,6 +141,22 @@ public class fakultetetMeMetoda {
             }
         }
 
+    }
+
+    /**
+     * @return String[]
+     */
+    protected static  String[] getProgrametEStudimit()
+    {
+        return new String[]{"Programi 2 vjecar", "Bachelor", "Master Profesional ", "Master Shkencor"};
+    }
+
+    /**
+     * @return String[]
+     */
+    protected static  String[] getFakultete()
+    {
+        return new String[] {"Fakulteti i Bujqesise dhe Mjedisit", "Fakulteti i Ekonomise dhe Agrobiznesit", "Fakulteti i Bioteknologjise dhe Ushqimit", "Fakulteti i Shkencave Pyjore", "Fakulteti i Mjeksise Veterinare"};
     }
 }
 
